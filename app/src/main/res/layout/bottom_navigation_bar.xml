@@ -1,0 +1,10 @@
+<com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx android:id="@+id/bottomBar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="bottom"
+    app:itemIconTint="@drawable/bottom_navigation_bar"
+    app:itemTextColor="@drawable/bottom_navigation_bar"
+    app:menu="@menu/menu_bottom"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" />

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <group android:checkableBehavior="single">
+        <item
+            android:icon="@drawable/ic_action_device_access_bluetooth_searching"
+            android:title="Connect"
+            android:id="@+id/nav_connect"/>
+        <item
+            android:icon="@drawable/bed"
+            android:id="@+id/nav_sleep_summary"
+            android:title="Sleep Summary" />
+        <item
+            android:icon="@drawable/ic_report"
+            android:id="@+id/nav_sleep_report"
+            android:title="Sleep Report"/>
+        <item
+            android:id="@+id/nav_smart_alarm"
+            android:icon="@drawable/ic_set_alarm"
+            android:title="Smart Alarm" />
+        <item
+            android:id="@+id/nav_sleep_therapy"
+            android:icon="@drawable/ic_compact_disc"
+            android:title="Sleep Therapy" />
+        <item
+            android:icon="@drawable/ic_doctor"
+            android:id="@+id/nav_doctor"
+            android:title="SleepDoc+ Connect"/>
+
+    </group>
+
+    <group
+        android:id="@+id/drawer_bottom"
+        android:checkableBehavior="none"
+        android:menuCategory="secondary">
+        <item
+            android:icon="@drawable/settings"
+            android:id="@+id/nav_setting"
+            android:title="Settings" />
+        <item
+            android:icon="@drawable/avatar"
+            android:id="@+id/nav_help_feedback"
+            android:title="Help and Feedback" />
+        <item
+            android:icon="@drawable/information"
+            android:id="@+id/nav_abut"
+            android:title="About" />
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Logout"/>
+    </group>
+</menu>

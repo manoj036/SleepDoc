@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar android:id="@+id/my_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:elevation="5dp"
+    android:background="#050615"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Practice UI"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/currentUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="Sara"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    </android.support.v7.widget.Toolbar>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape
+            android:innerRadiusRatio="3"
+            android:shape="ring"
+            android:thickness="15dp"
+            android:useLevel="false"
+            >
+            <solid android:color="@color/SleepScoreBackground" />
+        </shape>
+    </item>
+    <item android:id="@+id/progress">
+        <shape
+            android:innerRadiusRatio="3"
+            android:shape="ring"
+            android:thickness="15dp"
+            android:useLevel="true">
+            <corners android:bottomRightRadius="7.5dp"/>
+            <solid android:color="#fbea2b" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0a0c26">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#464758"/>
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#464758"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1.1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+
+                    android:id="@+id/relative2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="10dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true">
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="Max"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toTopOf="@+id/max_respiration"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/max_respiration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="11"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/sleep_score"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="breath per"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toTopOf="@+id/textView5"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.495"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/max_respiration" />
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="40dp"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="minute"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.496"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <ProgressBar
+                        android:id="@+id/pb_max_respiration"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="60"
+                        android:rotation="90"
+                        android:progressDrawable="@drawable/circular_small" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+
+                    android:id="@+id/relative3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="10dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true">
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="Min"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toTopOf="@+id/min_respiration"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/min_respiration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="11"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/sleep_score"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="breath per"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toTopOf="@+id/textView5"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.495"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/min_respiration" />
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="40dp"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="minute"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.496"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <ProgressBar
+                        android:id="@+id/pb_min_respiration"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:rotation="90"
+                        android:progress="40"
+                        android:progressDrawable="@drawable/circular_small" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <RelativeLayout
+
+                    android:id="@+id/relative2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="10dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true">
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="Avg"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toTopOf="@+id/avg_respiration"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/avg_respiration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="11"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/sleep_score"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="breath per"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toTopOf="@+id/textView5"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.495"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/avg_respiration" />
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="40dp"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="minute"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.496"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <ProgressBar
+                        android:id="@+id/pb_avg_respiration"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:rotation="90"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="80"
+                        android:progressDrawable="@drawable/circular_small" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+
+                    android:id="@+id/relative3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="10dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true">
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="Var"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toTopOf="@+id/var_respiration"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/var_respiration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="11"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/sleep_score"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="breath per"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toTopOf="@+id/textView5"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.495"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/var_respiration" />
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="40dp"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="0sp"
+                            android:paddingBottom="-5dp"
+                            android:paddingTop="-5dp"
+                            android:text="minute"
+                            android:textColor="@color/sleepsummarytextcolor"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.496"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <ProgressBar
+                        android:id="@+id/pb_var_respiration"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:indeterminate="false"
+                        android:rotation="90"
+                        android:max="100"
+                        android:progress="50"
+                        android:progressDrawable="@drawable/circular_small" />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#464758" />
+</LinearLayout>

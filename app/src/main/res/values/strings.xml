@@ -1,0 +1,55 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Practice UI</string>
+    <string name="Sunday">S</string>
+    <string name="Monday">M</string>
+    <string name="Tuesday">T</string>
+    <string name="Wednesday">W</string>
+    <string name="Thursday">T</string>
+    <string name="Friday">F</string>
+    <string name="Saturday">S</string>
+    <string name="sleep_summary">Sleep Summary</string>
+    <string name="sleep_score">20</string>
+    <string name="sleep_score_heading">Sleep Score</string>
+    <string name="date">Friday, Jan 26</string>
+    <string name="sara">Sara</string>
+    <string name="john">John</string>
+    <string name="BT_On">ON</string>
+    <string name="BT_Off">OFF</string>
+    <string name="BT_Disc">Discoverable</string>
+    <string name="BT_discover">Discover</string>
+    <string name="Connect">Connect</string>
+    <!--<string name="Data"></string>-->
+    <string name="Send">Send</string>
+    <!--  BluetoothChat -->
+    <string name="send">Send</string>
+    <string name="not_connected">You are not connected to a device</string>
+    <string name="bt_not_enabled_leaving">Bluetooth was not enabled.</string>
+    <string name="title_connecting">connecting...</string>
+    <string name="title_connected_to">connected to <xliff:g id="device_name">%1$s</xliff:g></string>
+    <string name="title_not_connected">not connected</string>
+
+    <!--  DeviceListActivity -->
+    <string name="scanning">scanning for devices...</string>
+    <string name="select_device">select a device to connect</string>
+    <string name="none_paired">No devices have been paired</string>
+    <string name="none_found">No devices found</string>
+    <string name="title_paired_devices">Paired Devices</string>
+    <string name="title_other_devices">Other Available Devices</string>
+    <string name="button_scan">Scan for devices</string>
+
+    <!-- Options Menu -->
+    <string name="secure_connect">Connect a device - Secure</string>
+    <string name="insecure_connect">Connect a device - Insecure</string>
+    <string name="discoverable">Make discoverable</string>
+    <string name="title_activity_main">RespirationActivity</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_heart_rate">HeartRateActivity</string>
+
+    <!-- FireBase -->
+    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
+    <string name="facebook_application_id">225562854670214</string>
+    <string name="fb_login_protocol_scheme">fb225562854670214</string>
+    <!-- Twitter consumer key and secret -->
+    <string name="twitter_consumer_key" translatable="false">PracticeUI</string>
+    <string name="twitter_consumer_secret" translatable="false">twPracticeUI</string>
+</resources>

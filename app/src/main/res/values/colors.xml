@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#7a7b81</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#050323</color>
+    <color name="Toolbar">#050615</color>
+    <color name="Daybar">#050615</color>
+    <color name="toolbar_text">#7a7d84</color>
+    <color name="SleepScore">#00CF49</color>
+    <color name="progressBar">#00CF49</color>
+    <color name="SleepScoreBackground">#20234E</color>
+    <color name="blue">#0000ff</color>
+    <color name="sleepsummarytextcolor">#00f4fe</color>
+    <color name="respiration_plot">#ff0000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="black_20">#33000000</color>
+    <color name="white_20">#33FFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="text_enabled">#FFFFFFFF</color>
+    <color name="text_disabled">#4DFFFFFF</color>
+
+    <color name="icon_enabled">#FFFFFFFF</color>
+    <color name="icon_disabled">#FF63727B</color>
+
+    <color name="medium_text_enabled">#FF000000</color>
+    <color name="medium_text_disabled">#4D000000</color>
+
+    <color name="light_blue_500">#03A9F4</color>
+    <color name="cyan_500">#00BCD4</color>
+    <color name="teal_500">#009688</color>
+    <color name="green_500">#4CAF50</color>
+    <color name="light_green_500">#8BC34A</color>
+
+    <integer-array name="custom_tab_colors">
+        <item>@color/light_blue_500</item>
+        <item>@color/cyan_500</item>
+        <item>@color/teal_500</item>
+        <item>@color/green_500</item>
+        <item>@color/light_green_500</item>
+    </integer-array>
+</resources>

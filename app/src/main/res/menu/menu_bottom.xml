@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/sleep_summary_button"
+        android:icon="@drawable/ic_bed"
+        app:showAsAction="ifRoom"
+        tools:ignore="MenuTitle" />
+
+    <item
+        android:id="@+id/respiration_button"
+        android:icon="@drawable/lungs"
+        app:showAsAction="ifRoom"
+        tools:ignore="MenuTitle" />
+
+    <item
+        android:id="@+id/live_monitoring_button"
+        android:icon="@drawable/ic_sine_waves_analysis"
+        app:showAsAction="ifRoom"
+        tools:ignore="MenuTitle" />
+
+    <item
+        android:id="@+id/heart_rate_button"
+        android:icon="@drawable/heart"
+        app:showAsAction="ifRoom"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/environment_button"
+        android:icon="@drawable/ic_temperature_control"
+        app:showAsAction="ifRoom"
+        tools:ignore="MenuTitle" />
+</menu>
