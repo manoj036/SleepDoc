@@ -60,13 +60,14 @@ public class SleepSummaryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        if (mView[mPage] == null) {
+//        if (mView[mPage] == null) {
             View view = inflater.inflate(R.layout.sleep_summary_fragment, container, false);
             sleepData = sleepDataArray[mPage];
             EditFragment(view);
-            mView[mPage] = view;
-        }
-        return mView[mPage];
+//            mView[mPage] = view;
+//        }
+//        return mView[mPage];
+        return view;
     }
 
     @SuppressLint("SetTextI18n")
@@ -102,12 +103,6 @@ public class SleepSummaryFragment extends Fragment {
                 sleepScore.setTextColor(Color.parseColor("#ff0000"));
                 tv_greeting.setText("Your score is better than 30% of SleepDoc+ users");
             }
-            DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
-
-//            ObjectAnimator objectAnimator = ObjectAnimator.ofInt(progressBar, "progress", 0, sleepData.getSleep_score() * 100);
-//            objectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-//            objectAnimator.setDuration(1500);
-//            objectAnimator.start();
 
             NumberFormat f = new DecimalFormat("00");
 

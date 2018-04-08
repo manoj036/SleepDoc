@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.TabLayout;
 import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -21,9 +20,6 @@ import android.widget.Toast;
 import com.example.manojkumar.practiceui.adapter.WeekSummaryPagerAdapter;
 import com.example.manojkumar.practiceui.firebase.DatabaseOperation;
 import com.example.manojkumar.practiceui.firebase.SleepData;
-import com.example.manojkumar.practiceui.firebase.VitalsData;
-import com.example.manojkumar.practiceui.model.DayData;
-import com.example.manojkumar.practiceui.utils.DataAccessObject;
 import com.example.manojkumar.practiceui.utils.GenericFileProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -37,10 +33,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.TimeZone;
-
-import static android.os.SystemClock.sleep;
 
 public class SleepSummaryActivity extends BaseActivity {
 
@@ -137,35 +130,38 @@ public class SleepSummaryActivity extends BaseActivity {
                     .child("users")
                     .child("users_health_data")
                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                    .child(startOfDayTimeStamp.toString())
-                    .child("sleep_data")
-                    .child("data");
+                    .child(startOfDayTimeStamp.toString());
 
+//           Fetching SleepData from the server
             int finalI = i;
-            pager_data_reference[i].addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+            pager_data_reference[i]
+                    .child("sleep_data")
+                    .child("data")
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    SleepData sleepData = new SleepData();
-                    sleepData = dataSnapshot.getValue(SleepData.class);
-                    sleepDataArray[finalI] = sleepData;
-                    viewPager.getAdapter().notifyDataSetChanged();
-                    Log.d(TAG, "sleepData: NotifyDataset Changed Called" + dataSnapshot.getValue());
-                }
+                            SleepData sleepData = new SleepData();
+                            sleepData = dataSnapshot.getValue(SleepData.class);
+                            sleepDataArray[finalI] = sleepData;
+                            viewPager.getAdapter().notifyDataSetChanged();
+//                            Log.d(TAG, "sleepData: NotifyDataset Changed Called" + dataSnapshot.getValue());
+                        }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
+                        }
+                    });
         }
     }
 
     private Handler handler = new Handler();
     private Runnable FireBasePushData = () -> {
-//        DatabaseOperation dummydata = new DatabaseOperation();
+        DatabaseOperation dummydata = new DatabaseOperation();
+//        dummydata.setEnvironmentalData();
 //        dummydata.setDataBaseData();
-        sleep(1000);
+//        sleep(1000);
     };
 
     public Bitmap getScreenShot() {

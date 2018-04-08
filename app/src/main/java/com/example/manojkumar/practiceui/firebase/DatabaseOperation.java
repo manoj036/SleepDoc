@@ -210,6 +210,42 @@ public class DatabaseOperation {
         }
     }
 
+    /*@Descrption : This methods sets data to the database
+          @Parameters : void - the values are hardcoded for now later they will be sent as a list of parametrs from the sensors
+        */
+    public void setEnvironmentalData() {
+        environmentalData = new EnvironmentalData();
+
+        for (int i = 0; i < 7; i++) {
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            String date = simpleTimeFormat.format(calendar.getTime());
+
+            int tempTime = (int) (System.currentTimeMillis() / 1000);
+            int temp = tempTime;
+            tempTime = (tempTime - (tempTime % (24 * 60 * 60)) - (i * 24 * 60 * 60));
+            String time = simpleTimeFormat.format(calendar.getTime());
+
+            currentDate = Integer.toString(tempTime);
+            Log.d(TAG, "setDataBaseData: CurrentDate: " + currentDate);
+
+            for (int j = 0; j < 50; j++) {
+
+                currentTime = Integer.toString(tempTime+600*j);
+
+                /**
+                 * set environmental data
+                 */
+                environmentalData.setTemp(new Random().nextInt(20) + 10);
+                environmentalData.setHumidity(new Random().nextInt(50) + 20);
+                environmentalData.setAq(new Random().nextInt(30) + 20);
+
+                mDatabase.child("users/users_health_data/" + userId + "/" + currentDate + "/" + "environmental_data/" + currentTime + "/").setValue(environmentalData);
+
+            }
+        }
+    }
+
     /*@Descrption : This methods gets data from the database and parses the JSON data to set in the respective class
       @Parameters : void
     */
@@ -245,10 +281,10 @@ public class DatabaseOperation {
                         .child("vitals_data").getChildren()) {
                     //Caste to class
                     tempVitalData = ds.getValue(VitalsData.class);
-                    int  dataTime = Integer.parseInt(ds.getKey());
+                    int dataTime = Integer.parseInt(ds.getKey());
 
                     keyVitalsData.setTime(dataTime);
-                    keyVitalsData.setVitalsData (tempVitalData);
+                    keyVitalsData.setVitalsData(tempVitalData);
 
                     keyVitalsDataList.add(keyVitalsData);
 
@@ -260,13 +296,13 @@ public class DatabaseOperation {
                 }
 //                Log.d(TAG, "vitalMap: " + vitalsDataMap);
 
-                for (int i=0; i<keyVitalsDataList.size(); i++){
+                for (int i = 0; i < keyVitalsDataList.size(); i++) {
                     vitalsData = keyVitalsDataList.get(i).getVitalsData();
                     int dataTime = keyVitalsDataList.get(i).getTime();
 //                    Log.d(TAG, "onDataChange: "  + dataTime + vitalsData);
                 }
 
-                int index=0;
+                int index = 0;
                 //Traverse till key and fetch all the children and put it in a map for processing
                 for (DataSnapshot ds : dataSnapshot.child("users")
                         .child("users_health_data")

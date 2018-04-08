@@ -9,6 +9,15 @@ public class EnvironmentalData {
     int aq;
     int humidity;
 
+    @Override
+    public String toString() {
+        return "EnvironmentalData{" +
+                "temp=" + temp +
+                ", aq=" + aq +
+                ", humidity=" + humidity +
+                '}';
+    }
+
     public EnvironmentalData() {
     }
 

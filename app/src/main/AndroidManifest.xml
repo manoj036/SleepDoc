@@ -16,7 +16,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".utils.FirebaseOfflineStorage"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".SleepSummaryActivity">
         </activity>
