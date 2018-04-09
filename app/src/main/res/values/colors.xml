@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#7a7b81</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#050323</color>
+    <color name="colorPrimary">#050615</color>
+    <color name="colorPrimaryDark">#050615</color>
+    <color name="colorAccent">#FF4081</color>
     <color name="Toolbar">#050615</color>
     <color name="Daybar">#050615</color>
     <color name="toolbar_text">#7a7d84</color>
@@ -12,7 +12,7 @@
     <color name="blue">#0000ff</color>
     <color name="sleepsummarytextcolor">#00f4fe</color>
     <color name="respiration_plot">#ff0000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="black_20">#33000000</color>
     <color name="white_20">#33FFFFFF</color>
@@ -32,6 +32,16 @@
     <color name="teal_500">#009688</color>
     <color name="green_500">#4CAF50</color>
     <color name="light_green_500">#8BC34A</color>
+
+    <color name="colorLine">#04CBFD</color>
+    <color name="colorCircle">#00FFE3</color>
+    <color name="colorBackground">#000012</color>
+    <color name="colorCardBackground">#001C2A</color>
+    <color name="colorTimelineTitle">#6B8B9B</color>
+    <color name="darkGrey">#8D8D8D</color>
+    <color name="lightGrey">#A5A5A5</color>
+    <color name="colorTimelineText">#747474</color>
+    <color name="colorLink">#15FF96</color>
 
     <integer-array name="custom_tab_colors">
         <item>@color/light_blue_500</item>

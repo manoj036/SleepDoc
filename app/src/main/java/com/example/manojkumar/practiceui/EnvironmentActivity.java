@@ -13,6 +13,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -63,8 +64,8 @@ public class EnvironmentActivity extends BaseActivity {
             }
         });
 
-        TabLayout tabLayout = findViewById(R.id.sliding_tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        SmartTabLayout tabLayout = findViewById(R.id.sliding_tabs);
+        tabLayout.setViewPager(viewPager);
 
         myRef = FirebaseDatabase.getInstance()
                 .getReference()
