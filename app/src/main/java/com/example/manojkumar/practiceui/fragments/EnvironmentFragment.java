@@ -17,10 +17,12 @@ import android.widget.TextView;
 import com.example.manojkumar.practiceui.R;
 import com.example.manojkumar.practiceui.adapter.TimelineAdapter;
 import com.example.manojkumar.practiceui.firebase.EnvironmentalData;
+import com.example.manojkumar.practiceui.firebase.VitalsData;
 import com.example.manojkumar.practiceui.model.KeyEnvironmentData;
+import com.example.manojkumar.practiceui.model.KeyVitalsData;
 import com.example.manojkumar.practiceui.model.Timeline;
-import com.example.manojkumar.practiceui.utils.HourAxisValueFormatter;
-import com.example.manojkumar.practiceui.utils.Seconds30AxisValueFormatter;
+import com.example.manojkumar.practiceui.utils.Minutes20AxisValueFormatter;
+import com.example.manojkumar.practiceui.utils.MinutesAxisValueFormatter;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
@@ -58,6 +60,8 @@ public class EnvironmentFragment extends Fragment {
     private DatabaseReference mDatabaseReference;
     public static ArrayList<ArrayList<KeyEnvironmentData>> keyEnvArray = new ArrayList<ArrayList<KeyEnvironmentData>>();
     private static ArrayList<KeyEnvironmentData> mKeyEnvironmentData;
+    public static ArrayList<ArrayList<KeyVitalsData>> keyLightNoiseArray = new ArrayList<ArrayList<KeyVitalsData>>();
+    private static ArrayList<KeyVitalsData> mKeyLightNoise;
     private int mPage;
     View mView;
 
@@ -86,7 +90,6 @@ public class EnvironmentFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         if (mView == null) {
             mView = inflater.inflate(R.layout.environment_fragment, container, false);
-            getEnvironmentData();
 
             recyclerView = (RecyclerView) mView.findViewById(R.id.recycler_view);
             mAdapter = new TimelineAdapter(mTimelineList);
@@ -100,38 +103,29 @@ public class EnvironmentFragment extends Fragment {
             temperatureChart.setScaleEnabled(false);
             temperatureChart.setDoubleTapToZoomEnabled(false);
             temperatureChart.animateX(1000);
-//            temperatureChart.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-//            temperatureChart.getRenderer().getPaintRender().setShadowLayer(1, 3, 3, Color.DKGRAY);
 
             humidityChart = (LineChart) mView.findViewById(R.id.env_chart2);
             humidityChart.setDoubleTapToZoomEnabled(false);
             humidityChart.animateX(1000);
             humidityChart.setScaleEnabled(false);
-//            humidityChart.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-//            humidityChart.getRenderer().getPaintRender().setShadowLayer(1, 3, 3, Color.DKGRAY);
 
             aqChart = (LineChart) mView.findViewById(R.id.env_chart3);
             aqChart.setDoubleTapToZoomEnabled(false);
             aqChart.animateX(1000);
             aqChart.setScaleEnabled(false);
-//            aqChart.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-//            aqChart.getRenderer().getPaintRender().setShadowLayer(1, 3, 3, Color.DKGRAY);
 
             lightChart = (LineChart) mView.findViewById(R.id.env_chart4);
             lightChart.setDoubleTapToZoomEnabled(false);
             lightChart.animateX(1000);
             lightChart.setScaleEnabled(false);
-//            lightChart.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-//            lightChart.getRenderer().getPaintRender().setShadowLayer(1, 3, 3, Color.DKGRAY);
 
             noiseChart = (LineChart) mView.findViewById(R.id.env_chart5);
             noiseChart.setDoubleTapToZoomEnabled(false);
             noiseChart.animateX(1000);
             noiseChart.setScaleEnabled(false);
-//            noiseChart.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-//            noiseChart.getRenderer().getPaintRender().setShadowLayer(1, 3, 3, Color.DKGRAY);
 
-            setData(48, 20);
+            getEnvironmentData();
+            getLightNoiseData();
 
             mLayout = (SlidingUpPanelLayout) mView.findViewById(R.id.sliding_layout);
             mLayout.setAnchorPoint(1.0f);
@@ -196,7 +190,7 @@ public class EnvironmentFragment extends Fragment {
         set1.setCubicIntensity(0.1f);
 
         LineData data = new LineData(set1);
-        HourAxisValueFormatter axisFormatter = new HourAxisValueFormatter(keyEnvArray.get(index).get(0).getTime());
+        Minutes20AxisValueFormatter axisFormatter = new Minutes20AxisValueFormatter(keyEnvArray.get(index).get(0).getTime());
         temperatureChart.setData(data);
         temperatureChart.getDescription().setEnabled(false);
         temperatureChart.getXAxis().setValueFormatter(axisFormatter);
@@ -213,7 +207,6 @@ public class EnvironmentFragment extends Fragment {
         YAxis right = temperatureChart.getAxisRight();
         right.setDrawLabels(false); // no axis labels
         right.setDrawGridLines(false);
-        right.setAxisMaximum(28);
         right.setDrawAxisLine(false); // no axis line
         XAxis xAxis = temperatureChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -222,6 +215,7 @@ public class EnvironmentFragment extends Fragment {
         xAxis.setLabelCount(5, false);
         xAxis.setTextColor(Color.LTGRAY);
         xAxis.setTextSize(10);
+        xAxis.setLabelCount(5, true);
 
         /**
          * Setting Air Quality Plot
@@ -254,14 +248,14 @@ public class EnvironmentFragment extends Fragment {
         set2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         set2.setCubicIntensity(0.1f);
         LineData data2 = new LineData(set2);
-        HourAxisValueFormatter axisFormatter2 = new HourAxisValueFormatter(keyEnvArray.get(index).get(0).getTime());
+        Minutes20AxisValueFormatter axisFormatter2 = new Minutes20AxisValueFormatter(keyEnvArray.get(index).get(0).getTime());
         humidityChart.setData(data2);
         humidityChart.getDescription().setEnabled(false);
         humidityChart.getXAxis().setValueFormatter(axisFormatter2);
         humidityChart.getAxisLeft().setTextColor(Color.LTGRAY);
         humidityChart.getAxisLeft().setTextSize(12);
         humidityChart.getAxisLeft().setDrawAxisLine(false);
-        humidityChart.getAxisLeft().setLabelCount(6 );
+        humidityChart.getAxisLeft().setLabelCount(6);
         humidityChart.setExtraTopOffset(10);
         Legend legend2 = humidityChart.getLegend();
         legend2.setPosition(Legend.LegendPosition.ABOVE_CHART_LEFT);
@@ -312,7 +306,7 @@ public class EnvironmentFragment extends Fragment {
         set3.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         set3.setCubicIntensity(0.1f);
         LineData data3 = new LineData(set3);
-        HourAxisValueFormatter axisFormatter3 = new HourAxisValueFormatter(keyEnvArray.get(index).get(0).getTime());
+        Minutes20AxisValueFormatter axisFormatter3 = new Minutes20AxisValueFormatter(keyEnvArray.get(index).get(0).getTime());
         aqChart.setData(data3);
         aqChart.getDescription().setEnabled(false);
         aqChart.getXAxis().setValueFormatter(axisFormatter3);
@@ -338,6 +332,125 @@ public class EnvironmentFragment extends Fragment {
         xAxis3.setLabelCount(5, false);
         xAxis3.setTextColor(Color.LTGRAY);
         xAxis3.setTextSize(10);
+    }
+
+    private void updateLightNoise(View view) {
+        int index;
+        index = 6 - mPage;
+        /***
+         * Setting Light Plot
+         */
+        ArrayList<Entry> yVals1 = new ArrayList<>();
+        DescriptiveStatistics descriptiveStatistics = new DescriptiveStatistics();
+        for (int i = 0; i < keyLightNoiseArray.get(index).size(); i++) {
+            float val = (float) keyLightNoiseArray.get(index).get(i).getVitalsData().getLight();
+            yVals1.add(new Entry(i, val));
+            descriptiveStatistics.addValue(val);
+        }
+        int max = (int) descriptiveStatistics.getMax();
+        int min = (int) descriptiveStatistics.getMin();
+        int avg = (int) descriptiveStatistics.getMean();
+        TextView light_max = (TextView) view.findViewById(R.id.light_max);
+        light_max.setText(String.valueOf(max));
+        TextView light_min = (TextView) view.findViewById(R.id.light_min);
+        light_min.setText(String.valueOf(min));
+        TextView light_avg = (TextView) view.findViewById(R.id.light_avg);
+        light_avg.setText(String.valueOf(avg));
+
+
+        LineDataSet set4;
+        set4 = new LineDataSet(yVals1, "Light (lx)");
+        set4.setColor(Color.MAGENTA);
+        set4.setDrawCircles(false);
+        set4.setLineWidth(3f);
+        set4.setDrawValues(false);
+        set4.setHighlightEnabled(false);
+        set4.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        set4.setCubicIntensity(0.1f);
+        LineData data4 = new LineData(set4);
+        MinutesAxisValueFormatter axisFormatter4 = new MinutesAxisValueFormatter(keyLightNoiseArray.get(index).get(0).getTime());
+        lightChart.setData(data4);
+        lightChart.getDescription().setEnabled(false);
+        lightChart.getXAxis().setValueFormatter(axisFormatter4);
+        lightChart.getAxisLeft().setTextColor(Color.LTGRAY);
+        lightChart.getAxisLeft().setTextSize(12);
+        lightChart.getAxisLeft().setDrawAxisLine(false);
+        lightChart.getAxisLeft().setLabelCount(6);
+        lightChart.setExtraTopOffset(10);
+        Legend legend4 = lightChart.getLegend();
+        legend4.setPosition(Legend.LegendPosition.ABOVE_CHART_LEFT);
+        legend4.setForm(Legend.LegendForm.CIRCLE);
+        legend4.setTextColor(Color.LTGRAY);
+        legend4.setTextSize(12);
+        YAxis right4 = lightChart.getAxisRight();
+        right4.setDrawLabels(false); // no axis labels
+        right4.setDrawGridLines(false);
+        right4.setAxisMaximum(28);
+        right4.setDrawAxisLine(false); // no axis line
+        YAxis left4 = lightChart.getAxisLeft();
+        left4.setValueFormatter(new LargeValueFormatter());
+        XAxis xAxis4 = lightChart.getXAxis();
+        xAxis4.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis4.setDrawAxisLine(true);
+        xAxis4.setDrawGridLines(false);
+        xAxis4.setLabelCount(5, false);
+        xAxis4.setTextColor(Color.LTGRAY);
+        xAxis4.setTextSize(10);
+
+        yVals1 = new ArrayList<>();
+        descriptiveStatistics = new DescriptiveStatistics();
+        for (int i = 0; i < keyLightNoiseArray.get(index).size(); i++) {
+            float val = (float) keyLightNoiseArray.get(index).get(i).getVitalsData().getNoise();
+            yVals1.add(new Entry(i, val));
+            descriptiveStatistics.addValue(val);
+        }
+        max = (int) descriptiveStatistics.getMax();
+        min = (int) descriptiveStatistics.getMin();
+        avg = (int) descriptiveStatistics.getMean();
+        TextView noise_max = (TextView) view.findViewById(R.id.noise_max);
+        noise_max.setText(String.valueOf(max));
+        TextView noise_min = (TextView) view.findViewById(R.id.noise_min);
+        noise_min.setText(String.valueOf(min));
+        TextView noise_avg = (TextView) view.findViewById(R.id.noise_avg);
+        noise_avg.setText(String.valueOf(avg));
+
+
+        LineDataSet set5;
+        set5 = new LineDataSet(yVals1, "Noise (dB)");
+        set5.setColor(Color.GREEN);
+        set5.setDrawCircles(false);
+        set5.setLineWidth(3f);
+        set5.setDrawValues(false);
+        set5.setHighlightEnabled(false);
+        set5.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        set5.setCubicIntensity(0.1f);
+        LineData data5 = new LineData(set5);
+        MinutesAxisValueFormatter axisFormatter5 = new MinutesAxisValueFormatter(keyLightNoiseArray.get(index).get(0).getTime());
+        noiseChart.setData(data5);
+        noiseChart.getDescription().setEnabled(false);
+        noiseChart.getXAxis().setValueFormatter(axisFormatter5);
+        noiseChart.getAxisLeft().setTextColor(Color.LTGRAY);
+        noiseChart.getAxisLeft().setTextSize(12);
+        noiseChart.getAxisLeft().setDrawAxisLine(false);
+        noiseChart.getAxisLeft().setLabelCount(6);
+        noiseChart.setExtraTopOffset(10);
+        Legend legend5 = noiseChart.getLegend();
+        legend5.setPosition(Legend.LegendPosition.ABOVE_CHART_LEFT);
+        legend5.setForm(Legend.LegendForm.CIRCLE);
+        legend5.setTextColor(Color.LTGRAY);
+        legend5.setTextSize(12);
+        YAxis right5 = noiseChart.getAxisRight();
+        right5.setDrawLabels(false); // no axis labels
+        right5.setDrawGridLines(false);
+        right5.setAxisMaximum(28);
+        right5.setDrawAxisLine(false); // no axis line
+        XAxis xAxis5 = noiseChart.getXAxis();
+        xAxis5.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis5.setDrawAxisLine(true);
+        xAxis5.setDrawGridLines(false);
+        xAxis5.setLabelCount(5, false);
+        xAxis5.setTextColor(Color.LTGRAY);
+        xAxis5.setTextSize(10);
     }
 
     private void getEnvironmentData() {
@@ -373,6 +486,49 @@ public class EnvironmentFragment extends Fragment {
                         }
 
                         updateFragment(getView());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+    }
+
+    private void getLightNoiseData() {
+        int currentPage = 6 - mPage;
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+        calendar.add(Calendar.DATE, -currentPage);
+        Date d = calendar.getTime();
+        calendar.setTime(d);
+        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        calendar.set(Calendar.AM_PM, Calendar.AM);
+        Long startOfDayTimeStamp = calendar.getTimeInMillis() / 1000;
+
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference()
+                .child("users")
+                .child("users_health_data")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .child(startOfDayTimeStamp.toString());
+
+        keyLightNoiseArray.add(new ArrayList<>());
+        mDatabaseReference
+                .child("vitals_data")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            KeyVitalsData keyLightNoise = new KeyVitalsData();
+                            keyLightNoise.setTime(Integer.parseInt(ds.getKey()));
+                            keyLightNoise.setVitalsData(ds.getValue(VitalsData.class));
+                            keyLightNoiseArray.get(currentPage).add(keyLightNoise);
+                            Log.d(TAG, "keyLightNoise: " + keyLightNoise.getVitalsData().toString());
+                        }
+
+                        updateLightNoise(getView());
                     }
 
                     @Override
@@ -455,93 +611,7 @@ public class EnvironmentFragment extends Fragment {
     }
 
     private void setData(int count, int range) {
-        ArrayList<Entry> yVals1 = new ArrayList<>();
 
-        yVals1 = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            float val = (float) (Math.random() * 60000) + 10000;
-            yVals1.add(new Entry(i, val));
-        }
-        LineDataSet set4;
-        set4 = new LineDataSet(yVals1, "Light (lx)");
-        set4.setColor(Color.MAGENTA);
-        set4.setDrawCircles(false);
-        set4.setLineWidth(3f);
-        set4.setDrawValues(false);
-        set4.setHighlightEnabled(false);
-        set4.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-        set4.setCubicIntensity(0.1f);
-        LineData data4 = new LineData(set4);
-        Seconds30AxisValueFormatter axisFormatter4 = new Seconds30AxisValueFormatter(106789);
-        lightChart.setData(data4);
-        lightChart.getDescription().setEnabled(false);
-        lightChart.getXAxis().setValueFormatter(axisFormatter4);
-        lightChart.getAxisLeft().setTextColor(Color.LTGRAY);
-        lightChart.getAxisLeft().setTextSize(12);
-        lightChart.getAxisLeft().setDrawAxisLine(false);
-        lightChart.getAxisLeft().setLabelCount(6);
-        lightChart.setExtraTopOffset(10);
-        Legend legend4 = lightChart.getLegend();
-        legend4.setPosition(Legend.LegendPosition.ABOVE_CHART_LEFT);
-        legend4.setForm(Legend.LegendForm.CIRCLE);
-        legend4.setTextColor(Color.LTGRAY);
-        legend4.setTextSize(12);
-        YAxis right4 = lightChart.getAxisRight();
-        right4.setDrawLabels(false); // no axis labels
-        right4.setDrawGridLines(false);
-        right4.setAxisMaximum(28);
-        right4.setDrawAxisLine(false); // no axis line
-        YAxis left4 = lightChart.getAxisLeft();
-        left4.setValueFormatter(new LargeValueFormatter());
-        XAxis xAxis4 = lightChart.getXAxis();
-        xAxis4.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis4.setDrawAxisLine(true);
-        xAxis4.setDrawGridLines(false);
-        xAxis4.setLabelCount(5, false);
-        xAxis4.setTextColor(Color.LTGRAY);
-        xAxis4.setTextSize(10);
-
-        yVals1 = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            float val = (float) (Math.random() * range) + 60;
-            yVals1.add(new Entry(i, val));
-        }
-        LineDataSet set5;
-        set5 = new LineDataSet(yVals1, "Noise (dB)");
-        set5.setColor(Color.GREEN);
-        set5.setDrawCircles(false);
-        set5.setLineWidth(3f);
-        set5.setDrawValues(false);
-        set5.setHighlightEnabled(false);
-        set5.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-        set5.setCubicIntensity(0.1f);
-        LineData data5 = new LineData(set5);
-        Seconds30AxisValueFormatter axisFormatter5 = new Seconds30AxisValueFormatter(106789);
-        noiseChart.setData(data5);
-        noiseChart.getDescription().setEnabled(false);
-        noiseChart.getXAxis().setValueFormatter(axisFormatter5);
-        noiseChart.getAxisLeft().setTextColor(Color.LTGRAY);
-        noiseChart.getAxisLeft().setTextSize(12);
-        noiseChart.getAxisLeft().setDrawAxisLine(false);
-        noiseChart.getAxisLeft().setLabelCount(6);
-        noiseChart.setExtraTopOffset(10);
-        Legend legend5 = noiseChart.getLegend();
-        legend5.setPosition(Legend.LegendPosition.ABOVE_CHART_LEFT);
-        legend5.setForm(Legend.LegendForm.CIRCLE);
-        legend5.setTextColor(Color.LTGRAY);
-        legend5.setTextSize(12);
-        YAxis right5 = noiseChart.getAxisRight();
-        right5.setDrawLabels(false); // no axis labels
-        right5.setDrawGridLines(false);
-        right5.setAxisMaximum(28);
-        right5.setDrawAxisLine(false); // no axis line
-        XAxis xAxis5 = noiseChart.getXAxis();
-        xAxis5.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis5.setDrawAxisLine(true);
-        xAxis5.setDrawGridLines(false);
-        xAxis5.setLabelCount(5, false);
-        xAxis5.setTextColor(Color.LTGRAY);
-        xAxis5.setTextSize(10);
 
     }
 

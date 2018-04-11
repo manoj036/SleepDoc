@@ -33,4 +33,12 @@ public class KeyVitalsData {
     public void setVitalsData(VitalsData vitalsData) {
         mVitalsData = vitalsData;
     }
+
+    @Override
+    public String toString() {
+        return "KeyVitalsData{" +
+                "time=" + time +
+                ", mVitalsData=" + mVitalsData +
+                '}';
+    }
 }

@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.widget.TextView;
 
 import com.example.manojkumar.practiceui.adapter.WeekSummaryPagerAdapter;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -23,6 +24,8 @@ public class RespirationActivity extends BaseActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Respiration Summary");
+        getSupportActionBar().show();
 
         ViewPager viewPager = findViewById(R.id.pager);
         WeekSummaryPagerAdapter pagerAdapter = new WeekSummaryPagerAdapter("Respiration",getSupportFragmentManager(), this);
@@ -57,8 +60,8 @@ public class RespirationActivity extends BaseActivity {
             }
         });
 
-        TabLayout tabLayout = findViewById(R.id.sliding_tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        SmartTabLayout tabLayout = findViewById(R.id.sliding_tabs);
+        tabLayout.setViewPager(viewPager);
     }
     @Override
     public int getContentViewId() {

@@ -203,8 +203,8 @@ public class DatabaseOperation {
             Date today = new Date();
             long now = today.getTime();
 
-            mDatabase.child("users/users_health_data/" + userId + "/" + currentDate + "/" + "vitals_data/" + currentTime + "/").updateChildren(vitalsDataArray);
-            mDatabase.child("users/users_health_data/" + userId + "/" + currentDate + "/" + "environmental_data/" + currentTime + "/").updateChildren(environmentalDataArray);
+//            mDatabase.child("users/users_health_data/" + userId + "/" + currentDate + "/" + "vitals_data/" + currentTime + "/").updateChildren(vitalsDataArray);
+//            mDatabase.child("users/users_health_data/" + userId + "/" + currentDate + "/" + "environmental_data/" + currentTime + "/").updateChildren(environmentalDataArray);
             mDatabase.child("users/users_health_data/" + userId + "/" + currentDate + "/" + "sleep_data/data").updateChildren(sleepDataArray);
             sleep(1000);
         }
@@ -229,9 +229,9 @@ public class DatabaseOperation {
             currentDate = Integer.toString(tempTime);
             Log.d(TAG, "setDataBaseData: CurrentDate: " + currentDate);
 
-            for (int j = 0; j < 50; j++) {
+            for (int j = 0; j < (20 + ((new Random().nextInt()*3))); j++) {
 
-                currentTime = Integer.toString(tempTime+600*j);
+                currentTime = Integer.toString(tempTime + 1200 * j );
 
                 /**
                  * set environmental data
@@ -242,6 +242,43 @@ public class DatabaseOperation {
 
                 mDatabase.child("users/users_health_data/" + userId + "/" + currentDate + "/" + "environmental_data/" + currentTime + "/").setValue(environmentalData);
 
+            }
+        }
+    }
+
+    public void setVitalsData() {
+        vitalsData = new VitalsData();
+
+        for (int i = 0; i < 7; i++) {
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            String date = simpleTimeFormat.format(calendar.getTime());
+
+            int tempTime = (int) (System.currentTimeMillis() / 1000);
+            int temp = tempTime;
+            tempTime = (tempTime - (tempTime % (24 * 60 * 60)) - (i * 24 * 60 * 60));
+            String time = simpleTimeFormat.format(calendar.getTime());
+
+            currentDate = Integer.toString(tempTime);
+            Log.d(TAG, "setDataBaseData: CurrentDate: " + currentDate);
+
+            /**
+             * set vitals information
+             */
+            int rand = new Random().nextInt(120);
+            for (int j = 0; j < (300+rand); j++) {
+                currentTime = Integer.toString(tempTime + 60 * j);
+                vitalsData.setResp_rate(new Random().nextInt(12) + 8);
+                vitalsData.setResp_var(new Random().nextInt(2) + 2);
+                vitalsData.setHeart_rate(new Random().nextInt(60) + 60);
+                vitalsData.setHeart_var(new Random().nextInt(10) + 10);
+                vitalsData.setBody_movement(new Random().nextInt(4));
+                vitalsData.setLight(new Random().nextInt(100) + 100);
+                vitalsData.setNoise(new Random().nextInt(20) + 30);
+                vitalsData.setSleep_stage(new Random().nextInt(4));
+                vitalsData.setIs_apnea(false);
+                vitalsData.setIs_snoring(true);
+                mDatabase.child("users/users_health_data/" + userId + "/" + currentDate + "/" + "vitals_data/" + currentTime + "/").setValue(vitalsData);
             }
         }
     }

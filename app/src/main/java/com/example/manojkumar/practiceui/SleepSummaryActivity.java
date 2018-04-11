@@ -35,6 +35,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
+import static android.os.SystemClock.sleep;
+
 public class SleepSummaryActivity extends BaseActivity {
 
     private static final String TAG = "Sleep Summary Activity";
@@ -159,8 +161,9 @@ public class SleepSummaryActivity extends BaseActivity {
     private Handler handler = new Handler();
     private Runnable FireBasePushData = () -> {
         DatabaseOperation dummydata = new DatabaseOperation();
-//        dummydata.setEnvironmentalData();
-//        dummydata.setDataBaseData();
+        dummydata.setEnvironmentalData();
+        dummydata.setDataBaseData();
+        dummydata.setVitalsData();
 //        sleep(1000);
     };
 

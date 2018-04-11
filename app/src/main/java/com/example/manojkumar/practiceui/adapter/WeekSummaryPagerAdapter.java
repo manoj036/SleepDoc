@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
 import com.example.manojkumar.practiceui.fragments.EnvironmentFragment;
+import com.example.manojkumar.practiceui.fragments.HeartRateFragment;
+import com.example.manojkumar.practiceui.fragments.RespirationFragment;
 import com.example.manojkumar.practiceui.fragments.SleepSummaryFragment;
 
 import java.util.Calendar;
@@ -41,9 +43,9 @@ public class WeekSummaryPagerAdapter extends FragmentStatePagerAdapter {
             case "Sleep":
                 return SleepSummaryFragment.newInstance(position, sleepDataArray);
             case "Respiration":
-//                return RespirationFragment.newInstance(position, daysData);
+                return RespirationFragment.newInstance(position);
             case "HeartRate":
-//                return HeartRateFragment.newInstance(position, daysData);
+                return HeartRateFragment.newInstance(position);
             case "Environment":
                 return EnvironmentFragment.newInstance(position);
             default:

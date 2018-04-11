@@ -12,13 +12,13 @@ import java.util.Locale;
  * Created by mbreath on 03/04/18.
  */
 
-public class HourAxisValueFormatter implements IAxisValueFormatter {
+public class MinutesAxisValueFormatter implements IAxisValueFormatter {
 
     private long referenceTimestamp; // minimum timestamp in your data set
     private DateFormat mDataFormat;
     private Date mDate;
 
-    public HourAxisValueFormatter(long referenceTimestamp) {
+    public MinutesAxisValueFormatter(long referenceTimestamp) {
         this.referenceTimestamp = referenceTimestamp;
         this.mDataFormat = new SimpleDateFormat("hh:mm a", Locale.ENGLISH);
         this.mDate = new Date();
@@ -44,7 +44,7 @@ public class HourAxisValueFormatter implements IAxisValueFormatter {
 
     private String getHour(long timestamp) {
         try {
-            mDate.setTime(timestamp * 1000*600);
+            mDate.setTime(timestamp*1000*20);
             return mDataFormat.format(mDate);
         } catch (Exception ex) {
             return "xx";
