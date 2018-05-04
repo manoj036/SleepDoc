@@ -34,7 +34,7 @@ public class EnvironmentActivity extends BaseActivity {
         ViewPager viewPager = findViewById(R.id.pager);
         WeekSummaryPagerAdapter pagerAdapter = new WeekSummaryPagerAdapter("Environment",getSupportFragmentManager(), this);
         viewPager.setAdapter(pagerAdapter);
-        viewPager.setOffscreenPageLimit(7);
+        viewPager.setOffscreenPageLimit(0);
         viewPager.setCurrentItem(7);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

@@ -15,6 +15,7 @@ import com.example.manojkumar.practiceui.fragments.SleepSummaryFragment;
 
 import java.util.Calendar;
 
+import static com.example.manojkumar.practiceui.RespirationActivity.keyVitalsDataArray;
 import static com.example.manojkumar.practiceui.SleepSummaryActivity.sleepDataArray;
 
 
@@ -38,12 +39,14 @@ public class WeekSummaryPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Log.d(TAG, "getItem: Week Summary Pager Adapter Called");
+//        Log.d(TAG, "getItem: Week Summary Pager Adapter Called");
         switch (callActivity) {
             case "Sleep":
                 return SleepSummaryFragment.newInstance(position, sleepDataArray);
             case "Respiration":
-                return RespirationFragment.newInstance(position);
+//                float val = (float) keyVitalsDataArray.get(0).get(0).getVitalsData().getResp_rate();
+//                Log.d(TAG, "getItem: WeekSummaryPager: Raspiration Called" + val);
+                return RespirationFragment.newInstance(position, keyVitalsDataArray);
             case "HeartRate":
                 return HeartRateFragment.newInstance(position);
             case "Environment":

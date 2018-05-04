@@ -52,4 +52,5 @@
     <!-- Twitter consumer key and secret -->
     <string name="twitter_consumer_key" translatable="false">PracticeUI</string>
     <string name="twitter_consumer_secret" translatable="false">twPracticeUI</string>
+    <string name="smart_alarm_title">Smart Alarm</string>
 </resources>

@@ -155,9 +155,9 @@ public class EnvironmentFragment extends Fragment {
     private void updateFragment(View view) {
         int index;
         index = 6 - mPage;
-        Log.d(TAG, "Page Number in update fragment: " + mPage + " Key Value: " + keyEnvArray.get(index).get(0).getTime());
-        Log.d(TAG, "keyEnvData Fragment: " + keyEnvArray.get(index).get(0).getEnvironmentalData().toString());
-        Log.d(TAG, "keyEnvData Fragment: " + keyEnvArray.get(index).get(1).getEnvironmentalData().toString());
+//        Log.d(TAG, "Page Number in update fragment: " + mPage + " Key Value: " + keyEnvArray.get(index).get(0).getTime());
+//        Log.d(TAG, "keyEnvData Fragment: " + keyEnvArray.get(index).get(0).getEnvironmentalData().toString());
+//        Log.d(TAG, "keyEnvData Fragment: " + keyEnvArray.get(index).get(1).getEnvironmentalData().toString());
 
         /***
          * Setting Tempreture Plot
@@ -572,14 +572,6 @@ public class EnvironmentFragment extends Fragment {
         calendar.set(Calendar.AM_PM, Calendar.AM);
         Long startOfDayTimeStamp = calendar.getTimeInMillis() / 1000;
         isVisible = isVisibleToUser;
-
-        if (isVisible && isStarted) {
-            for (int i = 0; i < keyEnvArray.get(0).size(); i++) {
-                Log.d(TAG, "Getting Data for currentPage: " + currentPage);
-                Log.d(TAG, "on Current page Calender Day is: " + calendar.getTime());
-                Log.d(TAG, "Timestamp: " + keyEnvArray.get(currentPage).get(i).getTime() + "        keyEnvData Fragment: " + keyEnvArray.get(0).get(i).getEnvironmentalData().toString());
-            }
-        }
     }
 
     private void prepareData() {

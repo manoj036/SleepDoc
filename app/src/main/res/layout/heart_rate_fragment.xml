@@ -6,33 +6,28 @@
     android:background="@color/colorBackground"
     android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/colorCardBackground"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:contentPadding="10dp">
 
-        <android.support.v7.widget.CardView
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/heart_chart"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            app:cardBackgroundColor="@color/colorCardBackground"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="4dp"
-            app:contentPadding="10dp">
-
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/heart_chart"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"></com.github.mikephil.charting.charts.LineChart>
-        </android.support.v7.widget.CardView>
-    </LinearLayout>
+            android:layout_height="match_parent"></com.github.mikephil.charting.charts.LineChart>
+    </android.support.v7.widget.CardView>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1">
 
         <android.support.constraint.ConstraintLayout
@@ -88,6 +83,7 @@
                             android:id="@+id/max_heart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="30dp"
                             android:includeFontPadding="false"
                             android:lineSpacingExtra="0sp"
                             android:paddingBottom="-5dp"
@@ -96,10 +92,10 @@
                             android:textColor="@color/sleepsummarytextcolor"
                             android:textSize="25sp"
                             android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textViewMax" />
-
 
 
                     </android.support.constraint.ConstraintLayout>
@@ -112,9 +108,9 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:indeterminate="false"
-                        android:max="30"
+                        android:max="150"
                         android:progress="10"
-                        android:progressDrawable="@drawable/circular_small"
+                        android:progressDrawable="@drawable/circular_small_green"
                         android:rotation="90" />
 
                 </RelativeLayout>
@@ -152,6 +148,7 @@
                             android:id="@+id/min_heart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="30dp"
                             android:includeFontPadding="false"
                             android:lineSpacingExtra="0sp"
                             android:paddingBottom="-5dp"
@@ -160,6 +157,7 @@
                             android:textColor="@color/sleepsummarytextcolor"
                             android:textSize="25sp"
                             android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textViewMin" />
@@ -174,9 +172,9 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:indeterminate="false"
-                        android:max="14"
+                        android:max="80"
                         android:progress="4"
-                        android:progressDrawable="@drawable/circular_small"
+                        android:progressDrawable="@drawable/circular_small_green"
                         android:rotation="90" />
 
                 </RelativeLayout>
@@ -227,6 +225,7 @@
                             android:id="@+id/avg_heart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="30dp"
                             android:includeFontPadding="false"
                             android:lineSpacingExtra="0sp"
                             android:paddingBottom="-5dp"
@@ -235,6 +234,7 @@
                             android:textColor="@color/sleepsummarytextcolor"
                             android:textSize="25sp"
                             android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textViewavg" />
@@ -249,9 +249,9 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:indeterminate="false"
-                        android:max="20"
+                        android:max="100"
                         android:progress="10"
-                        android:progressDrawable="@drawable/circular_small"
+                        android:progressDrawable="@drawable/circular_small_green"
                         android:rotation="90" />
 
                 </RelativeLayout>
@@ -290,6 +290,7 @@
                             android:id="@+id/var_heart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="30dp"
                             android:includeFontPadding="false"
                             android:lineSpacingExtra="0sp"
                             android:paddingBottom="-5dp"
@@ -298,7 +299,7 @@
                             android:textColor="@color/sleepsummarytextcolor"
                             android:textSize="25sp"
                             android:textStyle="bold"
-                            app:layout_constraintBottom_toTopOf="@+id/textView2"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textView21Var" />
@@ -313,9 +314,9 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:indeterminate="false"
-                        android:max="10"
+                        android:max="20"
                         android:progress="3"
-                        android:progressDrawable="@drawable/circular_small"
+                        android:progressDrawable="@drawable/circular_small_green"
                         android:rotation="90" />
 
                 </RelativeLayout>

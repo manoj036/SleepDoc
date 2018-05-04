@@ -20,8 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".SleepSummaryActivity"></activity>
-
+        <activity android:name=".SleepSummaryActivity">
+        </activity>
         <activity
             android:name=".ble.DeviceListActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -37,6 +37,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SmartAlarmActivity" >
+        </activity>
+
 
         <provider
             android:name=".utils.GenericFileProvider"

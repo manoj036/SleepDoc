@@ -129,7 +129,9 @@
                         <com.github.mikephil.charting.charts.LineChart
                             android:id="@+id/env_chart1"
                             android:layout_width="match_parent"
-                            android:layout_height="200dp"></com.github.mikephil.charting.charts.LineChart>
+                            android:layout_height="200dp">
+
+                        </com.github.mikephil.charting.charts.LineChart>
                     </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView

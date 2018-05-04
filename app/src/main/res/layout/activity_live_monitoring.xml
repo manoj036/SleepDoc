@@ -74,7 +74,7 @@
                     android:indeterminate="false"
                     android:max="100"
                     android:progress="60"
-                    android:progressDrawable="@drawable/circular_small"
+                    android:progressDrawable="@drawable/circular_small_blue"
                     android:rotation="90" />
 
                 <android.support.constraint.ConstraintLayout
@@ -170,7 +170,7 @@
                     android:indeterminate="false"
                     android:max="100"
                     android:progress="60"
-                    android:progressDrawable="@drawable/circular_small"
+                    android:progressDrawable="@drawable/circular_small_green"
                     android:rotation="90" />
 
                 <android.support.constraint.ConstraintLayout

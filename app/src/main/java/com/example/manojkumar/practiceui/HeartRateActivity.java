@@ -21,7 +21,7 @@ public class HeartRateActivity extends BaseActivity {
         ViewPager viewPager = findViewById(R.id.pager);
         WeekSummaryPagerAdapter pagerAdapter = new WeekSummaryPagerAdapter("HeartRate",getSupportFragmentManager(), this);
         viewPager.setAdapter(pagerAdapter);
-        viewPager.setOffscreenPageLimit(7);
+        viewPager.setOffscreenPageLimit(1);
         viewPager.setCurrentItem(7);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

@@ -53,13 +53,13 @@ public class SleepSummaryActivity extends BaseActivity {
     @Override
     protected void onResume() {
         CURRENT_BTM_ACTIVITY = R.id.sleep_summary_button;
-        super.onResume();
+		navigationView.getMenu().getItem(1).setChecked(true);
+		super.onResume();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TextView text = findViewById(R.id.text);
 
         TextView title = findViewById(R.id.toolbar_title);
         title.setText(R.string.sleep_summary);
@@ -70,7 +70,8 @@ public class SleepSummaryActivity extends BaseActivity {
 
         viewPager.setAdapter(pagerAdapter);
         viewPager.setCurrentItem(7);
-        viewPager.setOffscreenPageLimit(7);
+        viewPager.setOffscreenPageLimit(1);
+
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -100,15 +101,8 @@ public class SleepSummaryActivity extends BaseActivity {
 
         SmartTabLayout tabLayout = findViewById(R.id.sliding_tabs);
         tabLayout.setViewPager(viewPager);
-//        tabLayout.setupWithViewPager(viewPager);
 
-        DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
-        float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
-        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
-        Log.d(TAG, "onCreate: height=" + dpHeight);
-        Log.d(TAG, "onCreate: width=" + dpWidth);
-
-        handler.post(FireBasePushData);
+//        handler.post(FireBasePushData);
         UpdatePager();
     }
 
@@ -164,7 +158,6 @@ public class SleepSummaryActivity extends BaseActivity {
         dummydata.setEnvironmentalData();
         dummydata.setDataBaseData();
         dummydata.setVitalsData();
-//        sleep(1000);
     };
 
     public Bitmap getScreenShot() {

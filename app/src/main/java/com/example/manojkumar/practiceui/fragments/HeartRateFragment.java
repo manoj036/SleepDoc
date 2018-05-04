@@ -156,7 +156,7 @@ public class HeartRateFragment extends Fragment {
         TextView heart_avg = (TextView) view.findViewById(R.id.avg_heart);
         heart_avg.setText(String.valueOf(avg));
         ProgressBar heart_avg_pb = (ProgressBar) view.findViewById(R.id.pb_avg_heart);
-        heart_max_pb.setProgress(avg);
+        heart_avg_pb.setProgress(avg);
         TextView heart_var = (TextView) view.findViewById(R.id.var_heart);
         heart_var.setText(String.valueOf(std));
         ProgressBar heart_var_pb = (ProgressBar) view.findViewById(R.id.pb_var_heart);

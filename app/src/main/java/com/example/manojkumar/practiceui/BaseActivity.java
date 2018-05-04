@@ -37,7 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
     private TextView currentUser;
     public static int CURRENT_BTM_ACTIVITY =R.id.sleep_summary_button;
     public static int current_base_activity=1;
-    private NavigationView navigationView;
+    public NavigationView navigationView;
 
     public static final String TAG ="BASE_ACTIVITY";
     public static final int REQUEST_ENABLE_BT=13466;
@@ -84,16 +84,15 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
         drawerLayout=findViewById(R.id.drawerLayout);
 
         navigationView=findViewById(R.id.nav_drawer_view);
-        navigationView.getMenu().getItem(0).setChecked(true);
 
         currentUser=findViewById(R.id.currentUser);
 
         navigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.nav_sleep_summary:
-                    if(!navigationView.getMenu().getItem(0).isChecked()) {
+                    if(!navigationView.getMenu().getItem(1).isChecked()) {
                         startActivity(new Intent(getApplicationContext(), SleepSummaryActivity.class));
-                    }
+					}
                     break;
                 case R.id.nav_logout:
                     AuthUI.getInstance()
@@ -103,16 +102,22 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
                 case R.id.nav_connect:
                     startActivity(new Intent(getApplicationContext(),DeviceListActivity.class));
                     break;
+				case R.id.nav_smart_alarm:
+					startActivity(new Intent(getApplicationContext(),SmartAlarmActivity.class));
+					navigationView.getMenu().getItem(3).setChecked(true);
+					break;
             }
             drawerLayout.closeDrawers();
             return true;
         });
         bnve =findViewById(R.id.bottomBar);
-        bnve.setOnNavigationItemSelectedListener(this);
-        bnve.enableShiftingMode(false);
-        bnve.enableItemShiftingMode(false);
-        bnve.enableAnimation(false);
-        bnve.setTextVisibility(false);
+        if(bnve!=null) {
+			bnve.setOnNavigationItemSelectedListener(this);
+			bnve.enableShiftingMode(false);
+			bnve.enableItemShiftingMode(false);
+			bnve.enableAnimation(false);
+			bnve.setTextVisibility(false);
+		}
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -124,7 +129,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
     @Override
     protected void onResume() {
         super.onResume();
-        bnve.setSelectedItemId(getNavigationMenuItemId());
+		if(bnve!=null) {
+			bnve.setSelectedItemId(getNavigationMenuItemId());
+		}
     }
 
     @Override

@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "351004502560",
-    "firebase_url": "https://newsleepdoc.firebaseio.com",
-    "project_id": "newsleepdoc",
-    "storage_bucket": "newsleepdoc.appspot.com"
+    "project_number": "918821976433",
+    "firebase_url": "https://practice-ui.firebaseio.com",
+    "project_id": "practice-ui",
+    "storage_bucket": "practice-ui.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:351004502560:android:184335ba0c692d66",
+        "mobilesdk_app_id": "1:918821976433:android:184335ba0c692d66",
         "android_client_info": {
           "package_name": "com.example.manojkumar.practiceui"
         }
       },
       "oauth_client": [
         {
-          "client_id": "351004502560-e2490p7emig2oe68iil417befjopsiff.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.manojkumar.practiceui",
-            "certificate_hash": "26fe5f0b14e43b47aae96f58e69294b62a77158d"
-          }
-        },
-        {
-          "client_id": "351004502560-ddc2fq3orklv7hrb526ardfdffehjjki.apps.googleusercontent.com",
+          "client_id": "918821976433-b4shmu8359u45r1bse9dtbjk8cls8r2n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC7SNBprcKdEODJYAALHPOxKuMxAwwE9MI"
+          "current_key": "AIzaSyC1fi4FGUxyqqGtmpfqnoKTn4OH06nSzzw"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "351004502560-ddc2fq3orklv7hrb526ardfdffehjjki.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

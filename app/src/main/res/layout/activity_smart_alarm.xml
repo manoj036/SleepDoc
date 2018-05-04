@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0C26"
+    android:orientation="vertical"
+    tools:context=".SmartAlarmActivity"
+    android:id="@+id/drawerLayout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#050615"
+            android:elevation="5dp">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Smart Alarm"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/currentUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:paddingEnd="10dp"
+                android:text="Edit"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#00F3FD"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <me.tankery.lib.circularseekbar.CircularSeekBar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cs_circle_color="#20234E"
+                app:cs_circle_progress_color="#A95ECE"
+                app:cs_circle_stroke_width="25dp"
+                app:cs_circle_style="round"
+                app:cs_max="100"
+                app:cs_negative_enabled="false"
+                app:cs_pointer_color="#ffffff"
+                app:cs_pointer_halo_border_width="10dp"
+                app:cs_pointer_stroke_width="50dp"
+                app:cs_progress="25" />
+
+            <me.tankery.lib.circularseekbar.CircularSeekBar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cs_circle_color="#20234E"
+                app:cs_circle_progress_color="#009DFF"
+                app:cs_circle_stroke_width="23dp"
+                app:cs_circle_style="round"
+                app:cs_max="100"
+                app:cs_negative_enabled="false"
+                app:cs_pointer_color="#ffffff"
+                app:cs_pointer_halo_border_width="50dp"
+                app:cs_pointer_stroke_width="45dp"
+                app:cs_progress="65" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Wake you up between 07:00 and 07:30 AM"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <android.support.design.widget.NavigationView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/nav_drawer_view"
+        android:background="#050615"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        app:menu="@menu/drawer_menu"
+        app:headerLayout="@layout/navigation_header">
+    </android.support.design.widget.NavigationView>
+</android.support.v4.widget.DrawerLayout>
