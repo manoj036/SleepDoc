@@ -4,5 +4,5 @@ This application is made for recieving data from a microcontroller based device 
 
 The recieved data is categorised into their respective groups. The categorised data is displayed on different activities and is stored in google firebase
 
-![alt text](hhttps://github.com/manoj036/SleepDoc/blob/master/Screenshot_20180430-213553.jpg)
+![alt text](https://github.com/manoj036/SleepDoc/blob/master/Screenshot_20180430-213553.jpg)
 
